@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="">
+<html lang="en" class="transition-all duration-300"> <!-- Transition added to html -->
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 
-<body class="dark:bg-darkBlue bg-VeryLightGray">
+<body class="transition-colors duration-300 dark:bg-VerydarkBlue bg-VeryLightGray"> <!-- Transition added to body -->
     <!-- Svg -->
     <svg class="hidden">
         <symbol id="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -16,29 +16,73 @@
                 d="M7.455 2.004a.75.75 0 0 1 .26.77 7 7 0 0 0 9.958 7.967.75.75 0 0 1 1.067.853A8.5 8.5 0 1 1 6.647 1.921a.75.75 0 0 1 .808.083Z"
                 clip-rule="evenodd" />
         </symbol>
+        <symbol id="search" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </symbol>
 
     </svg>
     <!-- Header -->
-    <header class="dark:bg-darkBlueElements bg-white shadow-md  py-5">
+    <header class="transition-colors duration-300 dark:bg-darkBlueElements bg-white shadow-md py-5">
         <!-- Navbar -->
         <nav class="flex justify-between items-center mx-16">
             <div>
-                <h1 class="dark:text-white text-black font-bold text-xl">Where in the world?</h1>
+                <h1 class="transition-colors duration-300 dark:text-white text-black font-bold text-xl">Where in the
+                    world?</h1>
             </div>
-            <!-- Dark moode & lighe moode -->
+            <!-- Dark mode & light mode -->
             <div>
                 <!-- Svg moon -->
                 <div id="moonHandler" class="flex items-center cursor-pointer space-x-2">
                     <svg class="w-4 h-4">
-                        <use class="dark:text-white text-black " xlink:href="#moon"></use>
+                        <use class="transition-colors duration-300 dark:text-white text-black" xlink:href="#moon"></use>
                     </svg>
-                    <span class="dark:text-white text-black font-semibold">Dark Moode</span>
+                    <span class="transition-colors duration-300 dark:text-white text-black font-semibold"
+                        id="titleMoode"></span>
                 </div>
             </div>
         </nav>
     </header>
+    <main>
+        <!-- Search box & Region -->
+        <section>
+            <div class="flex justify-between mx-16 mt-28">
+                <div class="relative">
+                    <input type="text" placeholder="Search for a country..."
+                        class="dark:placeholder:text-white dark:bg-darkBlueElements border-none  outline-none placeholder:text-black transition-colors duration-300 placeholder:text-sm dark:text-white text-black shadow-md pl-10 py-3 px-32 w-full border rounded-md">
+
+                    <!-- Icon -->
+                    <svg
+                        class="w-5 h-5 text-gray-500 dark:text-white absolute left-3  top-1/2 transform -translate-y-1/2">
+                        <use xlink:href="#search"></use>
+                    </svg>
+                </div>
+                <!-- Slect Region -->
+                <div>
+                    <select name="Region"
+                        class="py-3 px-8 transition-colors duration-300 rounded-md dark:bg-darkBlueElements dark:text-white text-black outline-none shadow-lg"
+                        id="selectRegion">
+                        <option disabled selected hidden>Filter by Region</option>
+                        <option value="Africa" class="rounded ">Africa</option>
+                        <option value="America" class="rounded ">America</option>
+                        <option value="Asia" class="rounded ">Asia</option>
+                        <option value="Europe" class="rounded ">Europe</option>
+                        <option value="Oceania" class="rounded ">Oceania</option>
+                    </select>
+
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="grid grid-cols-4 gap-12 place-items-center mx-10 mt-10" id="importdataCountry">
 
 
+            </div>
+
+        </section>
+    </main>
 
     <script src="./App.js"></script>
 </body>
