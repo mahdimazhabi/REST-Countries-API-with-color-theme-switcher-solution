@@ -69,24 +69,44 @@ function renderCountries() {
   importdataCountry.innerHTML = "";
 
   DataCountry.forEach((country) => {
-    importdataCountry.innerHTML += `
-   <div class="dark:bg-darkBlueElements cursor-pointer bg-white w-full lg:w-[85%]  text-center rounded-lg shadow-lg mb-6 flex flex-col" onclick="ClickHandler('${
-     country.name
-   }')" >
-  <img src="${country.flag}" alt="${
-      country.name
-    }" class="mx-auto rounded-sm max-h-2 w-full object-cover mb-4" style="max-height: 10rem;">
-  <div class="flex-grow flex flex-col justify-between text-left ml-7 pb-8" style="min-height: 11rem;">
-    <h1 class="text-white mb-2">${country.name}</h1>
-    <span class="text-gray-400">Population: ${country.population.toLocaleString()}</span>
-    <span class="text-gray-400">Region: ${country.region}</span>
-    <span class="text-gray-400">Capital: ${country.capital}</span>
-  </div>
-</div>
-`;
+    // Create a div element dynamically
+    const countryDiv = document.createElement("div");
+    countryDiv.className =
+      "dark:bg-darkBlueElements cursor-pointer bg-white w-full lg:w-[85%] text-center rounded-lg shadow-lg mb-6 flex flex-col";
+    countryDiv.innerHTML = `
+      <img src="${country.flag}" alt="${country.name}" 
+           class="mx-auto rounded-sm max-h-2 w-full object-cover mb-4" style="max-height: 10rem;">
+      <div class="flex-grow flex flex-col justify-between text-left ml-7 pb-8" style="min-height: 11rem;">
+        <h1 class="dark:text-white text-black mb-2">${country.name}</h1>
+        <span class="dark:text-white text-black ">Population: ${country.population.toLocaleString()}</span>
+        <span class="dark:text-white text-black ">Region: ${
+          country.region
+        }</span>
+        <span class="dark:text-white text-black ">Capital: ${
+          country.capital
+        }</span>
+      </div>
+    `;
+
+    // // Attach the event listener for the click event
+    // countryDiv.addEventListener("click", () => {
+    //   ClickHandler(country.name); // Call the ClickHandler when the div is clicked
+    // });
+
+    // Append the created div to the container
+    importdataCountry.appendChild(countryDiv);
   });
 }
 
-function ClickHandler(countryname) {
-  console.log(countryname);
-}
+const inputvalue = document.getElementById("inputvalue");
+
+inputvalue.addEventListener("change", (e) => {
+  let valueinput = e.target.value;
+  let nemrcuntry = [];
+  DataCountry.forEach((country) => {
+    nemrcuntry.push(country.name);
+  });
+  nemrcuntry.includes(valueinput);
+  const results = nemrcuntry.filter((item) => item.includes(valueinput));
+  console.log(results);
+});
