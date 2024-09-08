@@ -70,7 +70,9 @@ function renderCountries() {
 
   DataCountry.forEach((country) => {
     importdataCountry.innerHTML += `
-   <div class="dark:bg-darkBlueElements cursor-pointer bg-white w-[85%] h-[450px] text-center rounded-lg shadow-lg mb-6 flex flex-col" >
+   <div class="dark:bg-darkBlueElements cursor-pointer bg-white w-full lg:w-[85%]  text-center rounded-lg shadow-lg mb-6 flex flex-col" onclick="ClickHandler('${
+     country.name
+   }')" >
   <img src="${country.flag}" alt="${
       country.name
     }" class="mx-auto rounded-sm max-h-2 w-full object-cover mb-4" style="max-height: 10rem;">
@@ -83,4 +85,8 @@ function renderCountries() {
 </div>
 `;
   });
+}
+
+function ClickHandler(countryname) {
+  console.log(countryname);
 }
